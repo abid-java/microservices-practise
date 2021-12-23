@@ -39,12 +39,12 @@ public class ProductController {
 		return responseEntity;
 	}
 	
-	@RequestMapping(value = "/products/{code}", method = RequestMethod.GET)
-	public ResponseEntity<Product> getProduct(@PathVariable("code") String code) {
+	@RequestMapping(value = "/products/{name}", method = RequestMethod.GET)
+	public ResponseEntity<Product> getProduct(@PathVariable("name") String name) {
 		Product product = null;
 		ResponseEntity<Product> responseEntity = null;
 		try {
-			product = productRepo.findByCode(code);
+			product = productRepo.findByName(name);
 			responseEntity  = new ResponseEntity<Product>(product, HttpStatus.OK);
 		} catch(Exception exception) {
 			logger.error("Exception while saving Product Details : " + exception.getMessage());
